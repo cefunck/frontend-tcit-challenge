@@ -31,7 +31,9 @@ const postsSlice = createSlice({
       let keyword = action.payload
       if (keyword != '') {
         newFilteredPosts = state.allPosts.filter((post) => {
-          return post.name.includes(keyword) || post.description.includes(keyword)
+          const foundInName = post.name.toLowerCase().includes(keyword.toLowerCase());
+          const foundInDescription = post.description.toLowerCase().includes(keyword.toLowerCase());
+          return foundInName || foundInDescription;
         })
       }
       state.filteredPosts = newFilteredPosts
