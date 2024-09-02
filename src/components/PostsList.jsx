@@ -28,26 +28,30 @@ function PostsList() {
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>nombre</td>
-                        <td>descripción</td>
-                        <td>acción</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        posts.map((post) => (
-                            <tr key={post.id}>
-                                <td>{post.name}</td>
-                                <td>{post.description}</td>
-                                <td><button onClick={() => deletePost(post.id)}>Eliminar</button></td>
+            {
+                posts.length == 0 ?
+                    <p>No hay posts para mostrar</p> :
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>nombre</td>
+                                <td>descripción</td>
+                                <td>acción</td>
                             </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {
+                                posts.map((post) => (
+                                    <tr key={post.id}>
+                                        <td>{post.name}</td>
+                                        <td>{post.description}</td>
+                                        <td><button onClick={() => deletePost(post.id)}>Eliminar</button></td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+            }
         </div>
     );
 };
