@@ -7,26 +7,26 @@ const PostsForm = () => {
     let [newPostName, setNewPostName] = useState('');
     let [newPostDescription, setNewPostDescription] = useState('');
 
-    function changeNewPostName(event){
+    function changeNewPostName(event) {
         setNewPostName(event.target.value)
     }
-    
-    function changeNewPostDescription(event){
+
+    function changeNewPostDescription(event) {
         setNewPostDescription(event.target.value)
     }
 
-    function resetInputs(){
+    function resetInputs() {
         setNewPostName('');
         setNewPostDescription('');
     }
 
     function createPost() {
-        if(newPostName && newPostDescription) {
-            dispatch(saveNewPost({newPostName, newPostDescription}))
+        if (newPostName && newPostDescription) {
+            dispatch(saveNewPost({ newPostName, newPostDescription }))
             resetInputs();
-        } else if(!newPostName && !newPostDescription) {
+        } else if (!newPostName && !newPostDescription) {
             alert('Los campos nombre y descripción no pueden estar vacíos')
-        } else if(!newPostName) {
+        } else if (!newPostName) {
             alert('El campo nombre no puede estar vacío')
         } else {
             alert('El campo descripción no puede estar vacío')

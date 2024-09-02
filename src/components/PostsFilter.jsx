@@ -12,7 +12,12 @@ function PostsFilter() {
 
     return (
         <div>
-            <input type="text" value={keyword} onChange={(event) => {setKeyword(event.target.value)}} placeholder="palabra clave"/>
+            <input
+                type="text"
+                value={keyword}
+                onChange={(event) => { setKeyword(event.target.value) }}
+                placeholder="palabra clave"
+            />
             <button onClick={filterPosts}>Buscar</button>
         </div>
     );
