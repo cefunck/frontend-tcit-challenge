@@ -2,6 +2,17 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveNewPost } from '../store/slices/postsSlice'
 
+
+const ALL_MISSING_MESSAGE = 'Los campos nombre y descripción no pueden estar vacíos';
+const MISSING_NAME_MESSAGE = 'El campo nombre no puede estar vacío';
+const MISSING_DESCRIPTION_MESSAGE = 'El campo descripción no puede estar vacío';
+
+const NAME_PLACEHOLDER = 'nombre';
+const DESCRIPTION_PLACEHOLDER = 'descripción';
+
+const CREATE_BUTTON_TEXT = 'Crear';
+
+
 const PostsForm = () => {
     const dispatch = useDispatch();
     let [newPostName, setNewPostName] = useState('');
@@ -25,19 +36,31 @@ const PostsForm = () => {
             dispatch(saveNewPost({ newPostName, newPostDescription }))
             resetInputs();
         } else if (!newPostName && !newPostDescription) {
-            alert('Los campos nombre y descripción no pueden estar vacíos')
+            alert(ALL_MISSING_MESSAGE)
         } else if (!newPostName) {
-            alert('El campo nombre no puede estar vacío')
+            alert(MISSING_NAME_MESSAGE)
         } else {
-            alert('El campo descripción no puede estar vacío')
+            alert(MISSING_DESCRIPTION_MESSAGE)
         }
     }
 
     return (
         <div>
-            <input type="text" value={newPostName} onChange={changeNewPostName} placeholder="nombre" />
-            <input type="text" value={newPostDescription} onChange={changeNewPostDescription} placeholder="descripción" />
-            <button onClick={createPost}>Crear</button>
+            <input
+                type="text"
+                value={newPostName}
+                onChange={changeNewPostName}
+                placeholder={NAME_PLACEHOLDER}
+            />
+
+            <input
+                type="text"
+                value={newPostDescription}
+                onChange={changeNewPostDescription}
+                placeholder={DESCRIPTION_PLACEHOLDER}
+            />
+
+            <button onClick={createPost}>{CREATE_BUTTON_TEXT}</button>
         </div>
     );
 };

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterPostsBy } from "../store/slices/postsSlice";
 
+const SEARCH_INPUT_PLACEHOLDER = 'palabra clave';
+const SEARCH_BUTTON_TEXT = 'Buscar';
+
 function PostsFilter() {
     const dispatch = useDispatch();
     const [keyword, setKeyword] = useState('');
@@ -16,9 +19,9 @@ function PostsFilter() {
                 type="text"
                 value={keyword}
                 onChange={(event) => { setKeyword(event.target.value) }}
-                placeholder="palabra clave"
+                placeholder={SEARCH_INPUT_PLACEHOLDER}
             />
-            <button onClick={filterPosts}>Buscar</button>
+            <button onClick={filterPosts}>{SEARCH_BUTTON_TEXT}</button>
         </div>
     );
 };
