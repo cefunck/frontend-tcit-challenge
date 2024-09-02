@@ -34,9 +34,9 @@ function PostsList() {
                     <table>
                         <thead>
                             <tr>
-                                <td>nombre</td>
-                                <td>descripción</td>
-                                <td>acción</td>
+                                <td><b>nombre</b></td>
+                                <td><b>descripción</b></td>
+                                <td><b>acción</b></td>
                             </tr>
                         </thead>
                         <tbody>
